@@ -1,0 +1,59 @@
+{
+  "name": "sitecore-logs-monitor",
+  "version": "1.0.0",
+  "description": "Monitor sitecore's current log file, like -tail",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon --exec electron .",
+    "dev": "nodemon --exec electron . --debug",
+    "test": "mocha && standard",
+    "package": "npm-run-all package:*",
+    "package:mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --out=out --icon=assets/app-icon/mac/app.icns --osx-sign.identity='Developer ID Application: GitHub' --extend-info=assets/mac/info.plist",
+    "package:win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --out=out --icon=assets/app-icon/win/app.ico",
+    "package:linux": "electron-packager . --overwrite --platform=linux --arch=x64 --out=out",
+    "package:sign-exe": "signcode './out/Electron API Demos-win32-ia32/Electron API Demos.exe' --cert ~/electron-api-demos.p12 --prompt --name 'Electron API Demos' --url 'http://electron.atom.io'",
+    "package:installer": "node ./script/installer.js",
+    "package:sign-installer": "signcode './out/windows-installer/ElectronAPIDemosSetup.exe' --cert ~/electron-api-demos.p12 --prompt --name 'Electron API Demos' --url 'http://electron.atom.io'",
+    "xpackage:mas": "./script/mas.sh",
+    "windows-store": "node ./script/windows-store.js",
+    "release": "node ./script/release.js",
+    "prepack": "check-for-leaks",
+    "prepush": "check-for-leaks"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Beatusvir/sitecore-logs-monitor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Beatusvir/sitecore-logs-monitor/issues"
+  },
+  "homepage": "https://github.com/Beatusvir/sitecore-logs-monitor#readme",
+  "dependencies": {
+    "chokidar": "^3.3.0",
+    "electron": "^7.1.2",
+    "electron-settings": "^3.2.0",
+    "electron-shortcut-normalizer": "^1.0.0",
+    "isomorphic-unfetch": "^3.0.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "check-for-leaks": "^1.2.1",
+    "devtron": "^1.4.0",
+    "electron-packager": "^14.1.1",
+    "electron-winstaller": "^4.0.0",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "mocha": "^6.2.2",
+    "nodemon": "^2.0.1",
+    "rimraf": "^3.0.0",
+    "signcode": "^1.0.0",
+    "standard": "^14.3.1"
+  }
+}

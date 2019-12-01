@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script> -->
+</head>
+
+<body>
+
+  <nav class="nav">
+    <header class="nav-header">
+      <h1 class="nav-title">Electron <strong>API Demos</strong></h1>
+      <svg class="nav-header-icon">
+        <use xlink:href="assets/img/icons.svg#icon-electron"></use>
+      </svg>
+    </header>
+  </nav>
+
+  <main class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" id="checkboxInfo" type="checkbox" value="info">
+          <label class="form-check-label" for="checkboxInfo">Information</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" id="checkboxDebug" type="checkbox" value="debug">
+          <label class="form-check-label" for="checkboxDebug">Debug</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" id="checkboxWarning" type="checkbox" value="warn">
+          <label class="form-check-label" for="checkboxWarning">Warning</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" id="checkboxError" type="checkbox" value="error">
+          <label class="form-check-label" for="checkboxError">Error</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" id="checkboxFatal" type="checkbox" value="fatal">
+          <label class="form-check-label" for="checkboxFatal">Fatal</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <pre><code data-path="renderer-process/file-monitor.js"></code></pre>
+        <ul id="file-list"></ul>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    require('./assets/imports')
+    require('./assets/ex-links')
+    require('./renderer-process/file-monitor')
+    // require('./assets/nav')
+    // require('./assets/demo-btns')
+    // require('./assets/code-blocks')
+    // require('./assets/normalize-shortcuts')
+  </script>
+</body>
+
+</html>
