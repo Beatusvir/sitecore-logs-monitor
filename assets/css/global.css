@@ -12,8 +12,16 @@
   overflow-y: auto;
   max-height: 70vh;
   margin: 0;
-  padding: 0;
+  padding: 3px;
+  border: 1px solid #efefef;
+  box-shadow: 5px 5px 10px #efefef;
+  border-radius: 3px;
 }
 
 #file-list li {
+  margin-bottom: 10px;
+}
+
+#file-list li:nth-child(odd) {
+  background-color: #ddd;
 }

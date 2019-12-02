@@ -113,16 +113,25 @@ ipcMain.on('get-files', (event, options) => {
       });
       let lineNumber = 0;
       let lines = '';
+      const linesArray = [];
       readInterface.on('line', (line) => {
         if (!options.filters) {
           lines += `<li>[${lineNumber}] ${line}</li>`;
+          linesArray.push(`<li>[${lineNumber}] ${line}</li>`);
         } else if (options.filters.some((filter) => line.indexOf(filter) !== -1)) {
           lines += `<li>[${lineNumber}] ${line}</li>`;
+          linesArray.push(`<li>[${lineNumber}] ${line}</li>`);
         }
         lineNumber += 1;
       });
       readInterface.on('close', () => {
-        event.sender.send('got-files', lines);
+        const regex = /<\/li>,<li>/g;
+        if (linesArray.length > 20) {
+          event.sender.send('got-files', linesArray.slice(linesArray.length - 20).toString().replace(regex, '</li><li>'));
+          return;
+        }
+        event.sender.send('got-files', linesArray.toString().replace(regex, '</li><li>'));
+        // event.sender.send('got-files', lines);
       });
     }
   });
