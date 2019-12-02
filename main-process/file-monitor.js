@@ -1,6 +1,4 @@
-const {
-  ipcMain,
-} = require('electron');
+const { ipcMain } = require('electron');
 const chokidar = require('chokidar');
 const fs = require('fs');
 const rl = require('readline');
@@ -24,7 +22,7 @@ const getNewestFile = (files, path) => {
 };
 
 const getLatestLog = (path) => {
-  console.log(path);
+  console.log('inside getLatestLog', path);
 
   const fullPath = path.substring(0, path.lastIndexOf('\\'));
   console.log(fullPath);
@@ -56,7 +54,7 @@ ipcMain.on('get-files', (event, options) => {
   });
 });
 
-(function() {
-  console.log('load main');
-
-})();
+ipcMain.on('ping', (event, options) => {
+  console.log('ping');
+  event.sender.send('pong', '');
+});
