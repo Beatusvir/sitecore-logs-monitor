@@ -112,13 +112,17 @@ ipcMain.on('get-files', (event, options) => {
         input: fs.createReadStream(filesPath),
       });
       let lineNumber = 0;
+      let lines = '';
       readInterface.on('line', (line) => {
         if (!options.filters) {
-          event.sender.send('got-files', { line, lineNumber });
+          lines += `<li>[${lineNumber}] ${line}</li>`;
         } else if (options.filters.some((filter) => line.indexOf(filter) !== -1)) {
-          event.sender.send('got-files', { line, lineNumber });
+          lines += `<li>[${lineNumber}] ${line}</li>`;
         }
         lineNumber += 1;
+      });
+      readInterface.on('close', () => {
+        event.sender.send('got-files', lines);
       });
     }
   });

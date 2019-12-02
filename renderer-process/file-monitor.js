@@ -56,5 +56,6 @@ if (folder && filtersStore && filtersStore.length > 0) {
 }
 
 ipcRenderer.on('got-files', (event, args) => {
-  document.getElementById('file-list').innerHTML += `<li>${args.line}</li>`;
+  document.getElementById('file-list').innerHTML = args;
+  window.scrollTo(0, document.querySelector('ul#file-list').scrollHeight);
 });
