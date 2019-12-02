@@ -2,7 +2,6 @@ const shell = require('electron').shell;
 
 const links = document.querySelectorAll('a[href]');
 
-console.log('running ex-links');
 Array.prototype.forEach.call(links, (link) => {
   const url = link.getAttribute('href');
   if (url.indexOf('http') === 0) {

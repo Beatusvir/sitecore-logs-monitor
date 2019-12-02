@@ -1,7 +1,5 @@
-const path = require('path')
-const glob = require('glob')
-const {app, BrowserWindow} = require('electron')
-
+const path = require('path');
+const { app, BrowserWindow } = require('electron');
 const debug = /--debug/.test(process.argv[2])
 
 if (process.mas) app.setName('Electron APIs')
@@ -10,8 +8,6 @@ let mainWindow = null
 
 function initialize () {
   makeSingleInstance()
-
-  loadDemos()
 
   function createWindow () {
     const windowOptions = {
@@ -79,10 +75,4 @@ function makeSingleInstance () {
   })
 }
 
-// Require each JS file in the main-process dir
-function loadDemos () {
-  const files = glob.sync(path.join(__dirname, 'main-process/**/*.js'))
-  files.forEach((file) => { require(file) })
-}
-
-initialize()
+initialize();
